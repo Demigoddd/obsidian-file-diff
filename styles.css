@@ -3,7 +3,7 @@
 	max-width: 100%;
 	overflow-x: scroll;
 	padding: 1rem;
-  user-select: text;
+	user-select: text;
 }
 
 .file-diff__line {
@@ -45,23 +45,23 @@
 }
 
 .file-diff__action-text {
-  font-size: 0.65rem;
-  color: var(--text-muted);
-  user-select: none;
+	font-size: 0.65rem;
+	color: var(--text-muted);
+	user-select: none;
 }
 
 .file-diff__action-button {
-  font-size: 0.65rem;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: color 0.15s ease;
-  text-decoration-line: none;
-  user-select: none;
+	font-size: 0.65rem;
+	color: var(--text-muted);
+	cursor: pointer;
+	transition: color 0.15s ease;
+	text-decoration-line: none;
+	user-select: none;
 }
 
 .file-diff__action-button:hover {
-  color: var(--text-accent);
-  text-decoration-line: underline;
+	color: var(--text-accent);
+	text-decoration-line: underline;
 }
 
 /* Tailwind CSS */

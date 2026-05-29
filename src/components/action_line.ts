@@ -65,7 +65,7 @@ export class ActionLine {
 			}).build(actionLine);
 		} else if (hasMinusLines) {
 			new ActionLineButton({
-				text: `Accept`,
+				text: 'Accept',
 				onClick: (e) => this.insertFile1Difference(e, this.difference),
 			}).build(actionLine);
 			ActionLineDivider.build(actionLine);
@@ -75,7 +75,7 @@ export class ActionLine {
 			}).build(actionLine);
 		} else if (hasPlusLines) {
 			new ActionLineButton({
-				text: `Accept`,
+				text: 'Accept',
 				onClick: (e) => this.insertFile2Difference(e, this.difference),
 			}).build(actionLine);
 			ActionLineDivider.build(actionLine);
