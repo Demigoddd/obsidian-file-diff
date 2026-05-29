@@ -183,6 +183,13 @@ export class DifferencesView extends ItemView {
 			const line1 = difference.file1Lines[i];
 			const line2 = difference.file2Lines[i];
 
+			// Draw the header once
+			if (i === 0)
+				container.createDiv({
+					text: `From: ${this.state.file1.name}`,
+					cls: 'file-diff__action-text',
+				});
+
 			const lineDiv = container.createDiv({ cls: 'file-diff__line file-diff__top-line__bg' });
 			const diffSpans = this.buildDiffLine(line1, line2, 'file-diff_top-line__character');
 
@@ -201,6 +208,13 @@ export class DifferencesView extends ItemView {
 		for (let i = 0; i < difference.file2Lines.length; i += 1) {
 			const line1 = difference.file1Lines[i];
 			const line2 = difference.file2Lines[i];
+
+			// Draw the header once
+			if (i === 0)
+				container.createDiv({
+					text: `From: ${this.state.file2.name}`,
+					cls: 'file-diff__action-text',
+				});
 
 			const lineDiv = container.createDiv({ cls: 'file-diff__line file-diff__bottom-line__bg' });
 			const diffSpans = this.buildDiffLine(line2, line1, 'file-diff_bottom-line__character');

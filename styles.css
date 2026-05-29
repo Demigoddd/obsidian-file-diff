@@ -43,8 +43,22 @@
 	border-top-right-radius: 0;
 }
 
-.file-diff__action-line {
-	color: var(--text-muted);
+.file-diff__action-text {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.file-diff__action-button {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s ease;
+  text-decoration-line: none;
+}
+
+.file-diff__action-button:hover {
+  color: var(--text-accent);
+  text-decoration-line: underline;
 }
 
 /* Tailwind CSS */
@@ -58,18 +72,6 @@
 
 .gap-1 {
 	gap: 0.25rem; /* 4px */
-}
-
-.no-decoration {
-	text-decoration-line: none;
-}
-
-.no-decoration:hover {
-	text-decoration-line: none;
-}
-
-.text-xxs {
-	font-size: 0.65rem;
 }
 
 /* Rename from py-0.5 to py-0-5, as dots aren't allowed in selector names */
