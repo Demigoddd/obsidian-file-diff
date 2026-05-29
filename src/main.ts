@@ -1,4 +1,4 @@
-import { Plugin, TFile } from 'obsidian';
+import { Plugin, TFile, Notice } from 'obsidian';
 
 import {
 	DifferencesView,
@@ -82,22 +82,40 @@ export default class FileDiffPlugin extends Plugin {
 				}
 
 				const syncConflicts = this.findSyncConflicts();
+				let processCompleted = true;
 
-				for await (const syncConflict of syncConflicts) {
-					const continuePromise = new Promise<boolean>((resolve) => {
-						this.openDifferencesView({
-							file1: syncConflict.originalFile,
-							file2: syncConflict.syncConflictFile,
-							showMergeOption: true,
-							continueCallback: async (shouldContinue: boolean) =>
-								resolve(shouldContinue),
-						});
-					});
+				if (syncConflicts.length) {
+					for await (const syncConflict of syncConflicts) {
+						const continuePromise = new Promise<boolean>(
+							(resolve) => {
+								this.openDifferencesView({
+									file1: syncConflict.originalFile,
+									file2: syncConflict.syncConflictFile,
+									showMergeOption: true,
+									continueCallback: async (
+										shouldContinue: boolean
+									) => resolve(shouldContinue),
+								});
+							}
+						);
 
-					const shouldContinue = await continuePromise;
-					if (!shouldContinue) {
-						break;
+						const shouldContinue = await continuePromise;
+						if (!shouldContinue) {
+							processCompleted = false;
+							break;
+						}
 					}
+
+					if (processCompleted) {
+						// eslint-disable-next-line no-new
+						new Notice('All conflicts resolved.');
+					} else {
+						// eslint-disable-next-line no-new
+						new Notice('Process stopped.');
+					}
+				} else {
+					// eslint-disable-next-line no-new
+					new Notice('No conflicts detected.');
 				}
 			},
 		});
